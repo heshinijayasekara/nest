@@ -1,32 +1,94 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+// import { Category } from './enums';
 
-export enum category{
-    ADVENTURE='Adventure',
-    CLASSICS='Classics',
-    CRIME='Crime',
-    FANTASY='Fantasy',
+export enum type{
+    IMAGE='image',
+    VIDEO='video',
+    
 }
 
+export enum content {
+    COLLECTABLE_MODE = 'collectable',
+    TIME_MODE = 'time',
+}
 
-@Schema({
-    timestamps: true
-})
+export enum status {
+    ACTIVE = 'active',
+    INACTIVE = 'removed',
+}
+
+@Schema({ collection: 'itemData' }) 
+// @Schema({
+//     timestamps: true
+// })
 export class Item{
 
     @Prop()
-    title:string;
+    _id:object;
+
+    @Prop()
+    itemId:string;
+
+    @Prop()
+    views:number;
+
+    @Prop()
+    comments:number;
+
+    @Prop()
+    likes:number;
+
+    @Prop()
+    dislikes:number;
+
+    @Prop()
+    thrown:number;
+
+    @Prop()
+    caught:number;
+
+    @Prop()
+    shares:number;
+
+    @Prop()
+    publisherId:string;
+
+    @Prop()
+    type:type;
+
+    @Prop()
+    itemCreatedAt:string;
+
+
+    @Prop()
+    totalDistance:number;
+
+    @Prop()
+    speedByDistance:number;
+
+    @Prop()
+    numberOfLocations:number;
+
+    @Prop()
+    speedByLocations:number;
+
+    @Prop()
+    activePeriod:number;
+
+    @Prop()
+    contentType:content;
+
+    @Prop()
+    airLevel:number;
+
+    @Prop()
+    status:status;
+
+    @Prop()
+    category:string;
 
     @Prop()
     description:string;
-
-    @Prop()
-    author:string;
-
-    @Prop()
-    price:number;
-
-    @Prop()
-    category:category;
 
     
 }
